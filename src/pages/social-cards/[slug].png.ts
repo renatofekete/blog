@@ -14,17 +14,7 @@ const fontPath = path.resolve(
 )
 const fontData = fs.readFileSync(fontPath) // Reads the file as a Buffer
 
-const avatarPath = path.resolve(siteConfig.socialCardAvatarImage)
-let avatarData: Buffer | undefined
-let avatarBase64: string | undefined
-if (
-  fs.existsSync(avatarPath) &&
-  (path.extname(avatarPath).toLowerCase() === '.jpg' ||
-    path.extname(avatarPath).toLowerCase() === '.jpeg')
-) {
-  avatarData = fs.readFileSync(avatarPath)
-  avatarBase64 = `data:image/jpeg;base64,${avatarData.toString('base64')}`
-}
+const avatarBase64: string | undefined = undefined
 
 const defaultTheme =
   siteConfig.themes.default === 'auto'
@@ -76,12 +66,13 @@ const markup = (title: string, pubDate: string | undefined, author: string) =>
   </div>`)
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>
-
 export async function GET(context: APIContext) {
   const { pubDate, title, author } = context.props as Props
+  
   const svg = await satori(markup(title, pubDate, author) as ReactNode, ogOptions)
   const png = new Resvg(svg).render().asPng()
-  return new Response(png, {
+
+  return new Response(png as unknown as BodyInit, {
     headers: {
       'Cache-Control': 'public, max-age=31536000, immutable',
       'Content-Type': 'image/png',
