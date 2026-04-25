@@ -25,6 +25,6 @@ export default defineConfig({
       entrypoint: "astro/assets/services/noop",
     },
   },
-  site: "https://yourwebsite.com",
+  site: "https://renatofekete.com",
   integrations: [sitemap(), mdx()],
 });
