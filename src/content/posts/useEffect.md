@@ -1,5 +1,5 @@
 ---
-pubDate: 2026-04-25
+pubDate: 2026-04-30
 author: Renato Fekete
 title: useEffect
 description: "useEffect - what is it, and when should you use it."
