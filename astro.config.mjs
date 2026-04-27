@@ -20,6 +20,9 @@ export default defineConfig({
     skipInline: false,
     drafts: true,
   },
+  redirects: {
+    "/vscode-extensions/": "/",
+  },
   image: {
     service: {
       entrypoint: "astro/assets/services/noop",
