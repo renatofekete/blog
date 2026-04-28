@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { AstroSeo } from "@lexingtonthemes/seo";
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!-- <AstroSeo
@@ -84,7 +84,7 @@ import { AstroSeo } from "@lexingtonthemes/seo";
 />
 
 <!-- Canonical URL -->
-<link rel="canonical" href="https://www.renatofekete.com/" />
+<link rel="canonical" href={canonicalURL} />
 
 <!-- Additional SEO -->
 <meta name="robots" content="index, follow" />
