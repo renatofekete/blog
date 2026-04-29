@@ -33,7 +33,7 @@ const { frontmatter } = Astro.props;
           </p>
           <div class="flex gap-3">
             {
-              frontmatter.tags.map((tag) => (
+              frontmatter.tags.map((tag: unknown) => (
                 <span class="hover:text-blue-500 text-xs font-medium text-base-600">
                   <a href={`/tags/${tag}`}>{tag}</a>
                 </span>
